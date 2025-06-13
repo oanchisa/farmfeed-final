@@ -1,0 +1,106 @@
+<!-----------ManagementCustomer----------->
+<section class="management-customer">
+  <div class="main" id="main-page">
+    <div class="breadcrumb">
+      Quota / <span class="breadcrumb-highlight">Clients</span>
+      <div class="breadcrumb-actions">
+        <button class="icon-btn-mode" title="โหมดกลางคืน"><i class="bi bi-moon"></i></button>
+        <button class="icon-btn" title="ออกจากระบบ"><i class="bi bi-power"></i></button>
+      </div>
+    </div>
+    <div class="second">
+      <h1 style="font-weight: 400;">การจัดการลูกค้า</h1>
+
+      <div class="top-bar">
+        <div class="search-wrapper">
+          <input class="search-box" type="text" placeholder="ค้นหา" id="searchInput" />
+          <i class="bi bi-x search-clear" id="clearSearch"></i>
+          <div class="dropdown-icon">
+            <i class="bi bi-chevron-down"></i>
+          </div>
+        </div>
+        <button class="add-btn" id="addClientBtn">
+          <i class="bi bi-plus-lg"></i> เพิ่มลูกค้า
+        </button>
+      </div>
+      <div class="table-section">
+        <div class="table-header-row">
+          <span class="table-title" id="tableTitle">รายการลูกค้า</span>
+          <span class="summary" id="tableSummary">
+            <span>จำนวนลูกค้าทั้งหมด : <b style="color: #20B885;">999900000</b></span>
+            <span>จำนวนสินค้าที่ต้องการทั้งหมด (กิโลกรัม) : <b style="color: #20B885;">10000</b></span>
+          </span>
+          <button class="icon-btn delete-header-btn" title="ลบที่เลือก" style="margin-left:auto; border: none; display: flex; align-items: center;background: none; white-space: nowrap; min-width: max-content;"><i class="bi bi-trash" style="color: #666;"></i><span style="color: #666;"> ลบรายการ</span></button>
+        </div>
+        <div class="table-scroll-wrapper">
+          <table>
+            <thead class="table-head-gray">
+              <tr>
+                <th style="width: 10px; text-align: right; padding-right: 5px;">
+                  <input type="checkbox" id="selectAllCheckbox" />
+                </th>
+                <th style="width: 80px;">ลำดับที่ <i class="bi bi-arrow-down-short"></i></th>
+                <th style="width: 200px;">ชื่อลูกค้า <i class="bi bi-arrow-down-short"></i></th>
+                <th style="width: 300px;">จำนวนสินค้าที่ต้องการ (กิโลกรัม)</th>
+                <th style="width: 230px;">รอบส่งถัดไป</th>
+                <th style="width: 80px; text-align: center;">การจัดการ</th>
+              </tr>
+            </thead>
+          </table>
+          <div class="table-scroll-wrapper">
+            <table>
+              <tbody id="clientTableBody">
+                <tr>
+                  <td colspan="6" class="empty-row">กรุณาเพิ่มรายการ ลูกค้า เพื่อดำเนินการต่อ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="pagination">
+          <div class="per-page">
+            <span style="color: #5f5f5f !important; font-size: 1rem;">จำนวนที่แสดง</span>
+            <select>
+              <option>12</option>
+              <option>24</option>
+              <option>48</option>
+            </select>
+            <span class="showing"></span>
+          </div>
+          <div class="page-controls">
+            <button class="prev-page disabled" disabled>
+              <i class="bi bi-chevron-left"></i> ก่อนหน้า
+            </button>
+            <span class="page-num active-page">1</span>
+            <span class="page-num">2</span>
+            <span class="page-num">3</span>
+            <span class="page-num">4</span>
+            <span class="page-num">5</span>
+            <span class="ellipsis">...</span>
+            <span class="page-num">16</span>
+            <button class="next-page">
+              ถัดไป <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popup ยืนยันการลบรายการที่เลือก -->
+<div id="deleteSelectedModal" class="custom-modal-overlay">
+  <div class="custom-modal">
+    <div class="modal-header">
+      <div class="modal-title">ต้องการลบรายการที่เลือกไว้?</div>
+      <button id="closeDeleteSelectedModal" class="modal-close">&times;</button>
+    </div>
+    <div class="modal-message">
+      <div class="modal-desc">คุณต้องการลบรายการที่เลือกไว้หรือไม่?</div>
+    </div>
+    <div class="modal-actions-horizontal">
+      <button id="cancelDeleteModalBtn" class="modal-btn">ยกเลิก</button>
+      <button id="confirmDeleteBtn" class="modal-btn danger">ยืนยัน</button>
+    </div>
+  </div>
+</div>

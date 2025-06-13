@@ -1,0 +1,84 @@
+<div class="breadcrumb">
+  Quota /<span class="breadcrumb-highlight"> Clients</span>
+  <div class="breadcrumb-actions">
+    <button class="icon-btn-mode" title="โหมดกลางคืน"><i class="bi bi-moon"></i></button>
+    <button class="icon-btn" title="ออกจากระบบ"><i class="bi bi-power"></i></button>
+  </div>
+</div>
+<div class="second">
+  <form id="addOrderItemForm">
+    <div class="top-bar">
+      <div style="display: flex; align-items: center;">
+        <button onclick="window.history.back()"
+          style="background: none; border: none; font-size: inherit; cursor: pointer; display: flex; align-items: center; padding: 0; font-family: inherit;">
+          <span
+            style="font-family: 'Prompt', sans-serif; font-size: 2rem; margin-right: 15px; color: gray;">&#60;</span>
+        </button>
+        <h1 style="font-weight: 400;">เพิ่มรายการสั่งซื้อ</h1>
+      </div>
+      <div style="justify-content: flex-end;">
+        <button type="button" class="add-btn" id="cancelAddItem"
+          style="background: #fff; color: #222; border: 1px solid #ccc;font-family: 'Prompt', sans-serif;">ยกเลิก</button>
+        <button type="submit" class="add-btn" id="saveAddItem" style="font-family: 'Prompt', sans-serif;">เพิ่ม</button>
+      </div>
+    </div>
+
+    <div
+      style="background: #1F548D1A; border-radius: 12px; padding: 24px 16px 24px 16px; margin-bottom: 24px; box-shadow: -4px 4px 16px rgba(0, 0, 0, 0.1);">
+      <div style="margin-bottom: 20px;">
+        <label for="orderDate" style="font-weight: 500;">เพิ่ม ณ วันที่</label><br>
+        <div style="position: relative;">
+          <input type="text" id="orderDate" name="orderDate" required placeholder="วัน-เดือน-ปี"
+            style="width: 98%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;margin-top: 8px; font-family: 'Prompt', sans-serif;">
+          <i class="bi bi-calendar-date"
+            style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #888;"></i>
+        </div>
+      </div>
+      <div>
+        <label for="deliveryStartDate" style="font-weight: 500;">วันที่เริ่มส่งสินค้า</label><br>
+        <div style="position: relative;">
+          <input type="text" id="deliveryStartDate" name="deliveryStartDate" required placeholder="วว ดด ปปปป"
+            style="width: 98%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;margin-top: 8px; font-family: 'Prompt', sans-serif;">
+          <i class="bi bi-calendar-date"
+            style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #888;"></i>
+        </div>
+      </div>
+    </div>
+
+    <div
+      style="background: #fff; border-radius: 12px; padding: 24px 16px 16px 16px; box-shadow: -4px 4px 16px rgba(0, 0, 0, 0.1);">
+      <div style="font-family: 'Prompt', sans-serif; font-weight: 500; margin-bottom: 12px; color: #222;">รายการสินค้า</div>
+      <div style="margin-bottom: 16px; position: relative;">
+        <div style="position: relative; width: 30%; display: inline-block;">
+          <input 
+            class="search-box" 
+            type="text" 
+            placeholder="ค้นหาสินค้าจากชื่อสินค้า" 
+            id="searchInput"
+            style="width: 90%; height: 30px; padding: 5px 50px 5px 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 14px; font-family: 'Prompt', sans-serif;" 
+          />
+          
+          <i class="bi bi-x-circle-fill" 
+             style="position: absolute; right: 28px; top: 50%; transform: translateY(-50%); color: #ccc; cursor: pointer;">
+          </i>
+          
+          <i class="bi bi-caret-down-fill" 
+             style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #ccc; cursor: pointer;">
+          </i>
+        </div>
+        
+  </div>
+
+      <table style="width: 100%; border-collapse: collapse;">
+        
+        <tbody id="product-list-container">
+          <!-- Product items will be dynamically added here -->
+        </tbody>
+      </table>
+      <div id="order-items-container">
+        <!-- Order items will be dynamically added here -->
+      </div>
+    </div>
+  </form>
+</div>
+<script src="add-order-item.js"></script>

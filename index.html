@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>การจัดการลูกค้า</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script type="module" src="script.js"></script>
+</head>
+
+<body>
+  <!-- Load Sidebar Component -->
+  <div id="sidebar-container"></div>
+
+  <!-- Load Management Customer Component -->
+  <div id="management-customer-container"></div>
+
+  <!-- Load Add Customer Component -->
+  <div id="add-customer-container"></div>
+
+  <!-- Component Loader Script -->
+  <script>
+    // Function to load HTML components
+    async function loadComponent(containerId, componentPath) {
+      try {
+        const response = await fetch(componentPath);
+        const html = await response.text();
+        document.getElementById(containerId).innerHTML = html;
+      } catch (error) {
+        console.error(`Error loading component ${componentPath}:`, error);
+      }
+    }
+
+    // Load all components when the page loads
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadComponent('sidebar-container', 'component/Sidebar/Sidebar.html');
+      await loadComponent('management-customer-container', 'component/ManagementCustomer/management-customer.html');
+      await loadComponent('add-customer-container', 'component/AddCustomer/add-customer.html');
+    });
+  </script>
+</body>
+
+</html>

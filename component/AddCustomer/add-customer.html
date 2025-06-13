@@ -1,0 +1,113 @@
+<!-----------AddCustomer----------->
+<section class="add-customer" style="background: #fff;">
+    <div class="add-customer-page main page" data-page="add-customer" id="add-customer-page" style="display:none;">
+        <div class="breadcrumb">
+            Quota /<span class="breadcrumb-highlight"> Clients</span>
+            <div class="breadcrumb-actions">
+                <button class="icon-btn-mode" title="โหมดกลางคืน"><i class="bi bi-moon"></i></button>
+                <button class="icon-btn" title="ออกจากระบบ"><i class="bi bi-power"></i></button>
+            </div>
+        </div>
+        <div class="second" style="padding: 0 25px 15px 25px;">
+            <form id="addCustomerForm">
+                <div class="top-bar">
+                    <div style="display: flex; align-items: center;">
+                        <button onclick="window.history.back()"
+                            style="background: none; border: none; font-size: inherit; cursor: pointer; display: flex; align-items: center; padding: 0; font-family: inherit;">
+                            <span
+                                style="font-family: 'Prompt', sans-serif; font-size: 2rem; margin-right: 15px; color: gray;">&#60;</span>
+                        </button>
+                        <h1 style="font-weight: 400;">เพิ่มลูกค้า</h1>
+                    </div>
+                    <div style="justify-content: flex-end; ">
+                        <button type="button" class="add-btn" id="cancelAddCustomer"
+                            style="background: #fff; color: #222; border: 1px solid #ccc;font-family: 'Prompt', sans-serif;">ยกเลิก</button>
+                        <button type="submit" class="add-btn" id="saveAddCustomer"
+                            style="font-family: 'Prompt', sans-serif;">เพิ่ม</button>
+                    </div>
+                </div>
+                <div style="background: #1F548D1A; border-radius: 12px; padding: 24px 16px 24px 16px; margin-bottom: 24px; box-shadow: -4px 4px 16px rgba(0, 0, 0, 0.1);
+">
+                    <div style="margin-bottom: 20px; ">
+                        <label for="customerName" style="font-weight: 500;">ชื่อลูกค้า</label><br>
+                        <input type="text" id="customerName" name="customerName" required
+                            placeholder="ระบุชื่อลูกค้า"
+                            style="width: 98%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;margin-top: 8px; font-family: 'Prompt', sans-serif;">
+                    </div>
+                    <div style="margin-bottom: 0;">
+                        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                            <label style="white-space: nowrap; font-weight: 500;">รอบส่งสินค้า</label>
+                            <span style="display: flex; flex-wrap: wrap; gap: 12px; color: rgb(99, 99, 99);">
+                                <label><input type="checkbox" name="delivery" value="ทุกวัน"> ทุกวัน</label>
+                                <label><input type="checkbox" name="delivery" value="จันทร์"> จันทร์</label>
+                                <label><input type="checkbox" name="delivery" value="อังคาร"> อังคาร</label>
+                                <label><input type="checkbox" name="delivery" value="พุธ"> พุธ</label>
+                                <label><input type="checkbox" name="delivery" value="พฤหัส"> พฤหัส</label>
+                                <label><input type="checkbox" name="delivery" value="ศุกร์"> ศุกร์</label>
+                                <label><input type="checkbox" name="delivery" value="เสาร์"> เสาร์</label>
+                                <label><input type="checkbox" name="delivery" value="อาทิตย์"> อาทิตย์</label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div style="background: #fff; border-radius: 12px; padding: 24px 16px 24px 16px; margin-bottom: 24px; box-shadow: -4px 4px 16px rgba(0, 0, 0, 0.1); margin-top: 32px;">
+                <div style="font-family: 'Prompt', sans-serif; font-weight: 500; margin-bottom: 10px; color: #222; display: flex; justify-content: space-between; align-items: center;">
+                    <span>รายการสินค้าที่สั่งซื้อ <span id="orderItemCount">0</span> รายการ</span>
+                    
+                </div>
+                <div id="orderItemsDisplay"></div>
+                <button type="button" id="addOrderItemBtn"
+                    style="width: 100%; height: 40px; background: #21b887; color: #fff; border: none; border-radius: 6px; padding: 14px 0; font-size: 1rem; font-family: 'Prompt', sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; margin-top: 15px;">
+                    <span style="font-size: 1.2rem; font-weight: bold;">+</span> เพิ่มรายการสั่งซื้อ
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="main page" data-page="leaf" style="display:none;"></div>
+    <div class="main page" data-page="grid" style="display:none;"></div>
+    <div class="main page" data-page="box" style="display:none;"></div>
+    <div class="main page" data-page="ticket" style="display:none;"></div>
+    <div class="main page" data-page="person-vcard" style="display:none;"></div>
+    <div class="main page" data-page="card-checklist" style="display:none;"></div>
+    <div class="main page" data-page="gear" style="display:none;"></div>
+    <div class="main page" data-page="star" style="display:none;"></div>
+</section>
+
+<div class="add-order-item-page main page" data-page="add-order-em" id="add-order-item-page" style="display:none;">
+</div>
+
+<!-- Popup ยืนยันการเพิ่มลูกค้า -->
+<div id="confirmAddModal" class="custom-modal-overlay">
+    <div class="custom-modal">
+        <div class="modal-header">
+            <div class="modal-title">ยืนยันการเพิ่มลูกค้า?</div>
+            <button id="closeConfirmAddModal" class="modal-close">&times;</button>
+        </div>
+        <div class="modal-message">
+            <div class="modal-desc">คุณยืนยันการเพิ่มลูกค้าด้วยข้อมูลที่กรอกหรือไม่?</div>
+        </div>
+        <div class="modal-actions-horizontal">
+            <button id="cancelAddModalBtn" class="modal-btn">ยกเลิก</button>
+            <button id="confirmAddBtn" class="modal-btn confirm">ยืนยัน</button>
+        </div>
+    </div>
+</div>
+
+<!-- Popup ยกเลิกการเพิ่มลูกค้า -->
+<div id="cancelAddModal" class="custom-modal-overlay">
+    <div class="custom-modal">
+        <div class="modal-header">
+            <div class="modal-title">ต้องการยกเลิกการเพิ่มลูกค้า?</div>
+            <button id="closeCancelAddModal" class="modal-close">&times;</button>
+        </div>
+        <div class="modal-message">
+            <div class="modal-desc">คุณต้องการยกเลิกการเพิ่มลูกค้าด้วยข้อมูลที่กรอกหรือไม่?</div>
+        </div>
+        <div class="modal-actions-horizontal">
+            <button id="cancelCancelModalBtn" class="modal-btn">ยกเลิก</button>
+            <button id="confirmCancelBtn" class="modal-btn danger">ยืนยัน</button>
+        </div>
+    </div>
+</div>
